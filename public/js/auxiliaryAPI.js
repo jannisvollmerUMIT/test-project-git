@@ -1,29 +1,22 @@
-exports.celsiusToFahrenheit = function (x){
- return x*(9/5)
-}
-
-exports.fahrenheitToCelcius = function (fahrenheit){
- if (true) {
-    return (fahrenheit-32)*(5/1)
- }   
-}
-
-exports.getGreetingDependOnTime =  function (myDate) {
-    let timeBegin = '06:00';
-    let timeEnd = '22:00';
-    const dateBegin = new Date('2020-01-01 ' + timeBegin);
-    const dateEnd = new Date('2020-01-01 ' + timeEnd);
-    const dateCurrent = new Date('2020-01-01 ' + myDate.getHours() + ":" + myDate.getMinutes());
-
-    if (dateBegin.getTime() < dateCurrent.getTime()) {
-        if (dateCurrent.getTime() < dateEnd.getTime()) {
-            return "Guten Morgen"
-        }
-    }
-    else if (dateCurrent.getTime() > dateEnd.getTime() && dateBegin.getTime() > dateCurrent.getTime()) 
-
-
-    {
-        return "Gute Nacht"
-    }
-}
+//this function calculates a Fahrenheit value (output) from a Celsius value (Input)
+exports.celsiusToFahrenheit = function (celsius){
+    return celsius*(9/5)
+   }
+   
+   //this function calculates a Celsius value (output) from a Fahrenheit value (Input)
+   exports.fahrenheitToCelcius = function (fahrenheit){
+       return (fahrenheit-32)*(5/1) 
+   }
+   
+   // this function returns a fitting greeting to the console based on the current time
+   exports.getGreetingDependOnTime =  function (myDate) {
+       const timeBegin = 6;
+       const timeEnd = 22;
+       const currentHour = myDate.getHours();
+   
+       if (currentHour >= timeBegin && currentHour < timeEnd){
+           return "Guten Morgen";
+       } else {
+           return "Guten Abend";
+       }
+   }

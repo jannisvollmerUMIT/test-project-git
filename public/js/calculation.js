@@ -1,6 +1,9 @@
 const powerButton = document.getElementById("display");
 
-let temperature = 21, mode = "summer", level = 0, isOn = true;
+let temperature = 21;
+let mode = "summer"; 
+let level = 0;
+let isOn = true;
 
 
 const dateObj = document.getElementById("date");
@@ -40,39 +43,32 @@ function updateDisplay() {
     }
 }
 
-// this should be a very helpful comment
+// this function returns a greeting based on the curent time
 getGreetingDependOnTime = function (myDate) {
-    let timeBegin = '06:00';
-    let timeEnd = '22:00';
-    const dateBegin = new Date('2020-01-01 ' + timeBegin);
-    const dateEnd = new Date('2020-01-01 ' + timeEnd);
-    const dateCurrent = new Date('2020-01-01 ' + myDate.getHours() + ":" + myDate.getMinutes());
+    const timeBegin = 6;
+    const timeEnd = 22;
+    const currentHour = myDate.getHours();
 
-    if (dateBegin.getTime() < dateCurrent.getTime()) { //"guten morgen"
-        if (dateCurrent.getTime() >= dateEnd.getTime()) {
-
-            return "Guten Morgen"
-        }
-        else {
-            return "Guten Abend"
-        }
+    if (currentHour >= timeBegin && currentHour < timeEnd){
+        return "Guten Morgen";
     } else {
-        newVariable = dateCurrent.getTime()
-        console.log("For debugging: ") + dateBegin.getTime() + " " + dateCurrent.getTime() + " " + dateEnd.getTime()
-        return "Guten Morgen"
+        return "Guten Abend";
     }
 }
 
-function increaseTemperature() {
+//decreases the temperature by subtracting 1 degree
+function decreaseTemperature() {
     temperature--;
     updateDisplay();
 }
 
-function decreaseTemperature() {
+//increases the temperature by adding 1 degree
+function increaseTemperature() {
     temperature++;
     updateDisplay();
 }
 
+//changes the level of the fan speed
 function levelChange() {
     if (level < 3)
         level++;
@@ -81,6 +77,7 @@ function levelChange() {
     updateDisplay();
 }
 
+//changes the mode of the machine
 function modeChange() {
     mode == "summer" ? mode = "winter" : mode = "summer"
     updateDisplay();
