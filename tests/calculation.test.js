@@ -1,4 +1,4 @@
-const calculation = require('./calculation');
+const calculation = require('../public/js/calculation');
 
 describe('Unit-Tests für Funktionen ohne DOM und Benutzerinteraktion', () => {
   test('decreaseTemperature verringert die Temperatur um 1 Grad', () => {
