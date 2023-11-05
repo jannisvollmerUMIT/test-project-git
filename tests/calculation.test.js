@@ -1,4 +1,4 @@
-const calculation = require('../public/js/auxiliaryAPI');
+const calculation = require('../public/js/calculation');
 
 // Mock für globale Variablen
 let isOn = true;
