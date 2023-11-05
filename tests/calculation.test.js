@@ -1,46 +1,35 @@
-const calculation = require('../public/js/calculation');
+const calculation = require('./calculation');
 
-// Mock für globale Variablen
-let isOn = true;
-let temperature = 25;
-let level = 2;
-let mode = 'summer';
-
-describe('Funktionen für die Steuerung', () => {
-
+describe('Unit-Tests für Funktionen ohne DOM und Benutzerinteraktion', () => {
   test('decreaseTemperature verringert die Temperatur um 1 Grad', () => {
-    const initialTemperature = temperature;
-    decreaseTemperature();
-    expect(temperature).toBe(initialTemperature - 1);
-    // Erwartetes Verhalten: Die Temperatur sollte um 1 Grad verringert werden.
+    const initialTemperature = calculation.temperature;
+    calculation.decreaseTemperature();
+    expect(calculation.temperature).toBe(initialTemperature - 1);
   });
 
   test('increaseTemperature erhöht die Temperatur um 1 Grad', () => {
-    const initialTemperature = temperature;
-    increaseTemperature();
-    expect(temperature).toBe(initialTemperature + 1);
-    // Erwartetes Verhalten: Die Temperatur sollte um 1 Grad erhöht werden.
+    const initialTemperature = calculation.temperature;
+    calculation.increaseTemperature();
+    expect(calculation.temperature).toBe(initialTemperature + 1);
   });
 
-  test('levelChange ändert das Lüfterlevel', () => {
-    const initialLevel = level;
-    levelChange();
+  test('levelChange ändert das Level der Klimaanlage', () => {
+    const initialLevel = calculation.level;
+    calculation.levelChange();
     if (initialLevel < 3) {
-      expect(level).toBe(initialLevel + 1);
+      expect(calculation.level).toBe(initialLevel + 1);
     } else {
-      expect(level).toBe(0);
+      expect(calculation.level).toBe(0);
     }
-    // Erwartetes Verhalten: Das Level sollte geändert werden (von 0 bis 3).
   });
 
   test('modeChange ändert den Modus', () => {
-    const initialMode = mode;
-    modeChange();
+    const initialMode = calculation.mode;
+    calculation.modeChange();
     if (initialMode === 'summer') {
-      expect(mode).toBe('winter');
+      expect(calculation.mode).toBe('winter');
     } else {
-      expect(mode).toBe('summer');
+      expect(calculation.mode).toBe('summer');
     }
-    // Erwartetes Verhalten: Der Modus sollte geändert werden (von "summer" zu "winter" oder umgekehrt).
   });
 });
