@@ -1,4 +1,26 @@
+
 const calculation = require('../public/js/calculation');
+
+// Mock für DOM-Elemente
+let powerButton;
+let temperatureObj;
+let levelObj;
+let modusObj;
+
+beforeEach(() => {
+  // Erstellen Sie DOM-Elemente für Ihre Tests
+  document.body.innerHTML = `
+    <button id="on-off-button">Power</button>
+    <p id="temperature"></p>
+    <p id="level"></p>
+    <p id="modus"></p>
+  `;
+
+  powerButton = document.getElementById('on-off-button');
+  temperatureObj = document.getElementById('temperature');
+  levelObj = document.getElementById('level');
+  modusObj = document.getElementById('modus');
+});
 
 describe('Unit-Tests für Funktionen ohne DOM und Benutzerinteraktion', () => {
   test('decreaseTemperature verringert die Temperatur um 1 Grad', () => {
